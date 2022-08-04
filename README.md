@@ -1,4 +1,4 @@
-# Steam Distillery
+# Steam Distillery UI
 
 A simple frontend for consuming the apis exposed in [Steam Distillery](https://github.com/AzGoalie/steam-distillery) utilizing the following:
 
