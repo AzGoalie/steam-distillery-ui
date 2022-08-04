@@ -25,18 +25,9 @@ const APPS_QUERY = gql`
   }
 `;
 
-const multiplayerCategories = [
-  'Multi-player',
-  'Cross-Platform Multiplayer',
-  'Online Co-op',
-  'MMO',
-  'Online PvP',
-];
+const multiplayerCategories = ['Multi-player', 'Cross-Platform Multiplayer', 'Online Co-op', 'MMO', 'Online PvP'];
 
-const frequency = (
-  accu: { [key: string]: { freq: number; app: App } },
-  currentValue: App
-) => {
+const frequency = (accu: { [key: string]: { freq: number; app: App } }, currentValue: App) => {
   if (accu[currentValue.appid]) {
     accu[currentValue.appid].freq++;
   } else {
@@ -67,8 +58,7 @@ const useApps = () => {
 
         setApps(sharedApps);
       } else {
-        const multiplayerApps =
-          data.getOwnedApps[0].apps.filter(multiplayerPredicate);
+        const multiplayerApps = data.getOwnedApps[0].apps.filter(multiplayerPredicate);
         setApps(multiplayerApps);
       }
     }

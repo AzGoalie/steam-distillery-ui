@@ -4,12 +4,12 @@ interface GameCardProps {
 
 const GameCard = ({ game }: GameCardProps) => (
   <div className="p-4">
-    <div className="flex flex-col rounded-lg border-2 border-gray-200 border-opacity-50 p-8 sm:flex-row">
+    <div className="flex flex-col p-8 border-2 border-gray-200 border-opacity-50 rounded-lg sm:flex-row">
       <div className="flex-grow">
         <h2 className="mb-3 text-lg font-medium text-gray-900">{game.name}</h2>
 
         <a
-          className="mt-3 inline-flex items-center text-indigo-500"
+          className="inline-flex items-center mt-3 text-indigo-500"
           href={`https://store.steampowered.com/app/${game.appid}`}
           target="blank"
         >
@@ -20,7 +20,7 @@ const GameCard = ({ game }: GameCardProps) => (
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="2"
-            className="ml-2 h-4 w-4"
+            className="w-4 h-4 ml-2"
             viewBox="0 0 24 24"
           >
             <path d="M5 12h14M12 5l7 7-7 7"></path>

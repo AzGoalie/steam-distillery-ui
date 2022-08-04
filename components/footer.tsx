@@ -3,12 +3,12 @@ import githubIcon from '../public/GitHub-Mark-32px.png';
 import linkedinIcon from '../public/In-White-34.png';
 
 const Footer = () => (
-  <footer className="mt-24 bg-gray-100 px-5 py-6">
-    <div className="container mx-auto flex flex-col items-center sm:flex-row">
+  <footer className="px-5 py-6 mt-24 bg-gray-100">
+    <div className="container flex flex-col items-center mx-auto sm:flex-row">
       <a className="flex items-center justify-center font-medium text-gray-900">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-10 w-10 rounded-full bg-indigo-500 p-2 text-white"
+          className="w-10 h-10 p-2 text-white bg-indigo-500 rounded-full"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -23,14 +23,11 @@ const Footer = () => (
         <span className="ml-3 text-xl">Steam Distillery</span>
       </a>
 
-      <span className="mt-4 inline-flex items-center justify-center sm:ml-auto sm:mt-0">
+      <span className="inline-flex items-center justify-center mt-4 sm:ml-auto sm:mt-0">
         <a href="https://github.com/azgoalie">
           <Image src={githubIcon} alt="GitHub Icon" />
         </a>
-        <a
-          href="https://www.linkedin.com/in/travis-mcmahon-79055656"
-          className="ml-3 invert"
-        >
+        <a href="https://www.linkedin.com/in/travis-mcmahon-79055656" className="ml-3 invert">
           <Image src={linkedinIcon} alt="GitHub Icon" />
         </a>
       </span>
