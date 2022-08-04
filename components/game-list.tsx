@@ -13,9 +13,9 @@ const GameList = ({ games, loading }: GameListProps) => {
         <Spinner />
       </div>
     ) : (
-      <ul className="flex flex-wrap justify-center xl:justify-evenly">
+      <ul className="flex flex-wrap items-center justify-center xl:justify-evenly">
         {games?.map((g) => (
-          <li key={g.appid} className="max-w-md">
+          <li key={g.appid} className="w-80">
             <GameCard game={g} />
           </li>
         ))}
