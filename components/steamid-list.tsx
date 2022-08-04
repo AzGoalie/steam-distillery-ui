@@ -10,20 +10,26 @@ interface SteamidListItemProps {
 
 const SteamidListItem = ({ steamid, onRemove }: SteamidListItemProps) => (
   <li className="flex">
-    <div className="w-full p-4 bg-gray-100 rounded-tl-md rounded-bl-md">{steamid}</div>
+    <div className="block w-full rounded-tl-lg rounded-bl-lg border border-gray-300 bg-gray-100 p-2.5 text-sm text-gray-900">
+      {steamid}
+    </div>
     <button
-      className="px-2 text-lg text-center text-white bg-indigo-500 border-0 rounded-tr-md rounded-br-md hover:bg-indigo-600 focus:outline-none"
+      className="w-auto rounded-tr-lg rounded-br-lg bg-indigo-700 px-2 py-2.5 text-center text-sm font-medium text-white hover:bg-indigo-800 focus:outline-none focus:ring-4 focus:ring-blue-300"
       onClick={onRemove}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="w-6 h-6"
+        className="h-6 w-6"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
         strokeWidth={2}
       >
-        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M6 18L18 6M6 6l12 12"
+        />
       </svg>
     </button>
   </li>
@@ -32,10 +38,14 @@ const SteamidListItem = ({ steamid, onRemove }: SteamidListItemProps) => (
 const SteamidList = ({ steamids, removeSteamid }: SteamidListProps) => {
   return (
     <>
-      <h2 className="my-4 text-xl font-normal text-gray-900 sm:text-2xl">Steam IDs</h2>
+      <h2 className="mb-2 text-xl font-bold">Steam IDs</h2>
       <ul className="mb-4 space-y-4">
         {steamids.map((id, idx) => (
-          <SteamidListItem key={id + idx} steamid={id} onRemove={() => removeSteamid(id)} />
+          <SteamidListItem
+            key={id + idx}
+            steamid={id}
+            onRemove={() => removeSteamid(id)}
+          />
         ))}
       </ul>
     </>

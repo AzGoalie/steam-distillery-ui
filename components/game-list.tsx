@@ -13,9 +13,9 @@ const GameList = ({ games, loading }: GameListProps) => {
         <Spinner />
       </div>
     ) : (
-      <ul className="flex flex-wrap items-center justify-center xl:justify-evenly">
+      <ul className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
         {games?.map((g) => (
-          <li key={g.appid} className="w-80">
+          <li key={g.appid} className="">
             <GameCard game={g} />
           </li>
         ))}
@@ -25,7 +25,7 @@ const GameList = ({ games, loading }: GameListProps) => {
 
   return (
     <div className="w-full">
-      <h2 className="my-4 text-xl font-normal text-gray-900 sm:text-center sm:text-2xl">Games</h2>
+      <h2 className="mb-2 text-xl font-bold sm:text-center">Games</h2>
       <Content />
     </div>
   );

@@ -15,25 +15,27 @@ const SteamidInput = ({ addSteamid }: SteamidInputProps) => {
   };
 
   return (
-    <div className="flex flex-col justify-center max-w-sm gap-4 mx-auto sm:max-w-xl sm:flex-row sm:items-end">
+    <div className="mx-auto flex max-w-sm flex-col justify-center gap-4 sm:max-w-xl sm:flex-row sm:items-end">
       <div className="grow">
-        <label htmlFor="steamid" className="text-sm leading-7 text-gray-600">
+        <label
+          htmlFor="steamid"
+          className="mb-2 block text-sm font-medium text-gray-900"
+        >
           Steam ID
         </label>
         <input
           type="text"
           id="steamid"
-          name="steamid"
+          placeholder="12345678901234567"
           value={steamidInput}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setSteamidInput(e.target.value)}
-          className="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200"
+          onChange={(e) => setSteamidInput(e.target.value)}
+          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
         />
       </div>
-
       <button
         type="button"
         onClick={handleSubmit}
-        className="px-6 py-2 text-lg text-center text-white bg-indigo-500 border-0 rounded hover:bg-indigo-600 focus:outline-none"
+        className="w-full rounded-lg bg-indigo-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-indigo-800 focus:outline-none focus:ring-4 focus:ring-blue-300 sm:w-auto"
       >
         Add Steam ID
       </button>

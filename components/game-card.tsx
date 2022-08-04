@@ -3,31 +3,29 @@ interface GameCardProps {
 }
 
 const GameCard = ({ game }: GameCardProps) => (
-  <div className="p-4">
-    <div className="flex flex-col p-8 border-2 border-gray-200 border-opacity-50 rounded-lg sm:flex-row">
-      <div className="flex-grow">
-        <h2 className="mb-3 text-lg font-medium text-gray-900">{game.name}</h2>
-
-        <a
-          className="inline-flex items-center mt-3 text-indigo-500"
-          href={`https://store.steampowered.com/app/${game.appid}`}
-          target="blank"
-        >
-          Steam Page
-          <svg
-            fill="none"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            className="w-4 h-4 ml-2"
-            viewBox="0 0 24 24"
-          >
-            <path d="M5 12h14M12 5l7 7-7 7"></path>
-          </svg>
-        </a>
-      </div>
-    </div>
+  <div className="max-w-sm rounded-lg border border-gray-200 bg-white p-6 shadow-md">
+    <h5 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900">
+      {game.name}
+    </h5>
+    <p className="mb-3 font-normal text-gray-500">
+      <pre>TODO: Add description</pre>
+    </p>
+    <a
+      href={`https://store.steampowered.com/app/${game.appid}`}
+      className="inline-flex items-center text-indigo-600 hover:underline"
+      target="blank"
+    >
+      Steam Page
+      <svg
+        className="ml-2 h-5 w-5"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+      </svg>
+    </a>
   </div>
 );
 export default GameCard;
