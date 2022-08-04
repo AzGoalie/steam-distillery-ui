@@ -7,6 +7,9 @@ A simple frontend for consuming the apis exposed in [Steam Distillery](https://g
 * [TailwindCSS](https://tailwindcss.com/)
 * [Apollo GraphQL](https://www.apollographql.com/)
 
+## Live Demo
+A live demo can be found at: https://steam.pepitozcatemporium.com/
+
 ## Getting Started
 
 First, run the development server:
