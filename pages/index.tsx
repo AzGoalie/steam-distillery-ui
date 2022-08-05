@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useState } from 'react';
+import Button from '../components/button';
 import DarkmodeToggle from '../components/darkmode-toggle';
 import ErrorMessage from '../components/error-message';
 import Footer from '../components/footer';
@@ -65,14 +66,13 @@ const Home: NextPage = () => {
           <div className="sm:w-64 sm:shrink-0">
             <SteamidList steamids={steamids} removeSteamid={removeSteamid} />
 
-            <button
-              type="button"
+            <Button
+              fullWidth
               onClick={handleFindGames}
-              disabled={steamids?.length === 0}
-              className="w-full rounded-lg bg-indigo-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-indigo-800 focus:outline-none focus:ring-4 focus:ring-indigo-300 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-500"
+              disabled={steamids?.length <= 0}
             >
               Find Games!
-            </button>
+            </Button>
           </div>
 
           <GameList games={apps} loading={loading} />
