@@ -25,7 +25,9 @@ const GameList = ({ games, loading }: GameListProps) => {
 
   return (
     <div className="w-full">
-      <h2 className="mb-2 text-xl font-bold sm:text-center">Games</h2>
+      <h2 className="mb-2 text-xl font-bold dark:text-white sm:text-center">
+        Games
+      </h2>
       <Content />
     </div>
   );

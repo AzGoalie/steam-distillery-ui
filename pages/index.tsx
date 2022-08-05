@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useState } from 'react';
+import DarkmodeToggle from '../components/darkmode-toggle';
 import ErrorMessage from '../components/error-message';
 import Footer from '../components/footer';
 import GameList from '../components/game-list';
@@ -26,23 +27,27 @@ const Home: NextPage = () => {
   };
 
   return (
-    <div className="flex h-screen flex-col justify-between gap-4">
+    <div className="flex min-h-screen flex-col justify-between gap-4 dark:bg-gray-900">
       <Head>
         <title>Steam Distillery</title>
         <meta name="description" content="Searching Steam, distiled" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="mx-auto mt-12 w-full max-w-screen-2xl p-4">
-        <h1 className="mb-4 text-center text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
+      <main className="mx-auto w-full max-w-screen-2xl p-4">
+        <div className="container flex justify-end ">
+          <DarkmodeToggle />
+        </div>
+
+        <h1 className="mb-4 text-center text-4xl font-extrabold leading-none tracking-tight text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
           Steam Distillery
         </h1>
 
-        <p className="mb-8 text-center text-lg font-normal text-gray-500 sm:px-16 lg:text-xl xl:px-48">
+        <p className="mb-8 text-center text-lg font-normal text-gray-500 dark:text-gray-400 sm:px-16 lg:text-xl xl:px-48">
           Find multiplayer games that you share between friends! Enter a{' '}
           <a
             href="https://steamid.io/"
-            className="text-indigo-600 underline"
+            className="text-indigo-600 underline dark:text-white"
             target="blank"
           >
             SteamID
@@ -64,7 +69,7 @@ const Home: NextPage = () => {
               type="button"
               onClick={handleFindGames}
               disabled={steamids?.length === 0}
-              className="w-full rounded-lg bg-indigo-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-indigo-800 focus:outline-none focus:ring-4 focus:ring-blue-300 disabled:bg-indigo-300"
+              className="w-full rounded-lg bg-indigo-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-indigo-800 focus:outline-none focus:ring-4 focus:ring-indigo-300 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-500"
             >
               Find Games!
             </button>
