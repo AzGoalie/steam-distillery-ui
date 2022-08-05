@@ -16,7 +16,7 @@ const SteamidInput = ({ addSteamid }: SteamidInputProps) => {
   };
 
   return (
-    <div className="mx-auto flex max-w-sm flex-col justify-center gap-4 sm:max-w-xl sm:flex-row sm:items-end">
+    <div className="mx-auto flex w-full max-w-sm flex-col justify-center gap-4 sm:max-w-xl sm:flex-row sm:items-end">
       <div className="grow">
         <label
           htmlFor="steamid"

@@ -3,13 +3,13 @@ interface GameCardProps {
 }
 
 const GameCard = ({ game }: GameCardProps) => (
-  <div className="max-w-sm rounded-lg border border-gray-200 bg-white p-6 shadow-md dark:border-gray-700 dark:bg-gray-800">
+  <div className="flex h-full flex-col rounded-lg border border-gray-200 bg-white p-6 shadow-md dark:border-gray-700 dark:bg-gray-800">
     <h5 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
       {game.name}
     </h5>
-    <p className="mb-3 font-normal text-gray-500 dark:text-gray-400">
-      <pre>TODO: Add description</pre>
-    </p>
+    <pre className="mb-3 grow font-normal text-gray-500 dark:text-gray-400">
+      TODO: Add description
+    </pre>
     <a
       href={`https://store.steampowered.com/app/${game.appid}`}
       className="inline-flex items-center text-indigo-600 hover:underline dark:text-white"
@@ -28,4 +28,5 @@ const GameCard = ({ game }: GameCardProps) => (
     </a>
   </div>
 );
+
 export default GameCard;

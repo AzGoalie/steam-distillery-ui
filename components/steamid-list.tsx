@@ -9,7 +9,7 @@ interface SteamidListItemProps {
 }
 
 const SteamidListItem = ({ steamid, onRemove }: SteamidListItemProps) => (
-  <li className="flex">
+  <li className="flex sm:max-w-xs">
     <div className="block w-full rounded-tl-lg rounded-bl-lg border border-gray-300 bg-gray-100 p-2.5 text-sm text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white">
       {steamid}
     </div>
@@ -37,9 +37,28 @@ const SteamidListItem = ({ steamid, onRemove }: SteamidListItemProps) => (
 
 const SteamidList = ({ steamids, removeSteamid }: SteamidListProps) => {
   return (
-    <>
-      <h2 className="mb-2 text-xl font-bold dark:text-white">Steam IDs</h2>
-      <ul className="mb-4 space-y-4">
+    <div>
+      {steamids?.length > 0 && (
+        <h2 className="mb-3 flex items-center gap-3 p-1 text-base font-normal dark:text-white">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
+            />
+          </svg>
+          Steam IDs
+        </h2>
+      )}
+
+      <ul className="mx-auto grid gap-4 sm:grid-cols-3 md:grid-cols-4">
         {steamids.map((id, idx) => (
           <SteamidListItem
             key={id + idx}
@@ -48,7 +67,7 @@ const SteamidList = ({ steamids, removeSteamid }: SteamidListProps) => {
           />
         ))}
       </ul>
-    </>
+    </div>
   );
 };
 

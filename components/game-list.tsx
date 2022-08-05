@@ -13,9 +13,9 @@ const GameList = ({ games, loading }: GameListProps) => {
         <Spinner />
       </div>
     ) : (
-      <ul className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+      <ul className="mx-auto grid w-fit gap-8 md:grid-cols-2 xl:grid-cols-3">
         {games?.map((g) => (
-          <li key={g.appid} className="">
+          <li key={g.appid} className="max-w-sm">
             <GameCard game={g} />
           </li>
         ))}
@@ -24,10 +24,12 @@ const GameList = ({ games, loading }: GameListProps) => {
   };
 
   return (
-    <div className="w-full">
-      <h2 className="mb-2 text-xl font-bold dark:text-white sm:text-center">
-        Games
-      </h2>
+    <div>
+      {games?.length > 0 && (
+        <h2 className="mb-4 text-xl font-bold dark:text-white sm:text-center">
+          Games
+        </h2>
+      )}
       <Content />
     </div>
   );

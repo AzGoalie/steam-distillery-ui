@@ -1,7 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { useState } from 'react';
-import Button from '../components/button';
+import { useEffect, useState } from 'react';
 import DarkmodeToggle from '../components/darkmode-toggle';
 import ErrorMessage from '../components/error-message';
 import Footer from '../components/footer';
@@ -14,18 +13,20 @@ const Home: NextPage = () => {
   const { getApps, apps, loading, error } = useApps();
   const [steamids, setSteamids] = useState<string[]>([]);
 
-  const addSteamid = (steamid: string) => {
-    if (!steamids.includes(steamid)) {
-      setSteamids([...steamids, steamid]);
+  useEffect(() => {
+    if (steamids?.length > 0) {
+      getApps({ variables: { steamids } });
     }
+  }, [steamids]);
+
+  const addSteamid = (steamid: string) => {
+    // if (!steamids.includes(steamid)) {
+    setSteamids([...steamids, steamid]);
+    // }
   };
 
   const removeSteamid = (steamid: string) =>
     setSteamids(steamids.filter((id) => id !== steamid));
-
-  const handleFindGames = () => {
-    getApps({ variables: { steamids } });
-  };
 
   return (
     <div className="flex min-h-screen flex-col justify-between gap-4 dark:bg-gray-900">
@@ -35,7 +36,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="mx-auto w-full max-w-screen-2xl p-4">
+      <main className="mx-auto p-4">
         <div className="container flex justify-end ">
           <DarkmodeToggle />
         </div>
@@ -56,25 +57,12 @@ const Home: NextPage = () => {
           to begin.
         </p>
 
-        <div className="pb-8">
+        <div className="flex flex-col gap-8">
           <SteamidInput addSteamid={addSteamid} />
-        </div>
 
-        {error && <ErrorMessage message={error.message} />}
+          {error && <ErrorMessage message={error.message} />}
 
-        <div className="flex flex-col gap-8 sm:flex-row sm:p-8">
-          <div className="sm:w-64 sm:shrink-0">
-            <SteamidList steamids={steamids} removeSteamid={removeSteamid} />
-
-            <Button
-              fullWidth
-              onClick={handleFindGames}
-              disabled={steamids?.length <= 0}
-            >
-              Find Games!
-            </Button>
-          </div>
-
+          <SteamidList steamids={steamids} removeSteamid={removeSteamid} />
           <GameList games={apps} loading={loading} />
         </div>
       </main>
