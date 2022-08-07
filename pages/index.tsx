@@ -20,9 +20,9 @@ const Home: NextPage = () => {
   }, [steamids]);
 
   const addSteamid = (steamid: string) => {
-    // if (!steamids.includes(steamid)) {
-    setSteamids([...steamids, steamid]);
-    // }
+    if (!steamids.includes(steamid)) {
+      setSteamids([...steamids, steamid]);
+    }
   };
 
   const removeSteamid = (steamid: string) =>

@@ -61,7 +61,7 @@ const useApps = () => {
         const allApps = data.getOwnedApps.flatMap(({ apps }) => apps);
         const freq = allApps.reduce(frequency, {});
         const sharedApps = Object.keys(freq)
-          .filter((appid) => freq[appid].freq > 1)
+          .filter((appid) => freq[appid].freq === data.getOwnedApps.length)
           .map((appid) => freq[appid].app)
           .filter(multiplayerPredicate);
 
