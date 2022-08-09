@@ -1,6 +1,6 @@
-import Image from 'next/image';
-import githubIcon from '../public/GitHub-Mark-32px.png';
-import linkedinIcon from '../public/In-White-34.png';
+import Image from "next/image";
+import githubIcon from "../public/GitHub-Mark-32px.png";
+import linkedinIcon from "../public/In-White-34.png";
 
 const Footer = () => (
   <footer className="flex flex-col items-center bg-gray-100 p-4 shadow dark:bg-gray-800 sm:flex-row md:justify-between md:p-6">

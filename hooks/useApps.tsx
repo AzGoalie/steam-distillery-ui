@@ -1,5 +1,5 @@
-import { gql, useLazyQuery } from '@apollo/client';
-import { useEffect, useState } from 'react';
+import { gql, useLazyQuery } from "@apollo/client";
+import { useEffect, useState } from "react";
 
 interface App {
   appid: number;
@@ -26,11 +26,11 @@ const APPS_QUERY = gql`
 `;
 
 const multiplayerCategories = [
-  'Multi-player',
-  'Cross-Platform Multiplayer',
-  'Online Co-op',
-  'MMO',
-  'Online PvP',
+  "Multi-player",
+  "Cross-Platform Multiplayer",
+  "Online Co-op",
+  "MMO",
+  "Online PvP",
 ];
 
 const frequency = (

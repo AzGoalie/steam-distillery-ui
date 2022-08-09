@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const Moon = () => (
   <svg
@@ -39,9 +39,9 @@ const DarkmodeToggle = () => {
 
   useEffect(() => {
     if (darkmode) {
-      document.documentElement.classList.add('dark');
+      document.documentElement.classList.add("dark");
     } else {
-      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.remove("dark");
     }
   }, [darkmode]);
 

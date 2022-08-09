@@ -1,13 +1,13 @@
-import type { NextPage } from 'next';
-import Head from 'next/head';
-import { useEffect, useState } from 'react';
-import DarkmodeToggle from '../components/darkmode-toggle';
-import ErrorMessage from '../components/error-message';
-import Footer from '../components/footer';
-import GameList from '../components/game-list';
-import SteamidInput from '../components/steamid-input';
-import SteamidList from '../components/steamid-list';
-import useApps from '../hooks/useApps';
+import type { NextPage } from "next";
+import Head from "next/head";
+import { useEffect, useState } from "react";
+import DarkmodeToggle from "../components/darkmode-toggle";
+import ErrorMessage from "../components/error-message";
+import Footer from "../components/footer";
+import GameList from "../components/game-list";
+import SteamidInput from "../components/steamid-input";
+import SteamidList from "../components/steamid-list";
+import useApps from "../hooks/useApps";
 
 const Home: NextPage = () => {
   const { getApps, apps, loading, error } = useApps();
@@ -46,14 +46,14 @@ const Home: NextPage = () => {
         </h1>
 
         <p className="mb-8 text-center text-lg font-normal text-gray-500 dark:text-gray-400 sm:px-16 lg:text-xl xl:px-48">
-          Find multiplayer games that you share between friends! Enter a{' '}
+          Find multiplayer games that you share between friends! Enter a{" "}
           <a
             href="https://steamid.io/"
             className="text-indigo-600 underline dark:text-white"
             target="blank"
           >
             SteamID
-          </a>{' '}
+          </a>{" "}
           to begin.
         </p>
 

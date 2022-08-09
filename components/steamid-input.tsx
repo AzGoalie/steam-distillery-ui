@@ -1,17 +1,17 @@
-import { useState } from 'react';
-import Button from './button';
+import { useState } from "react";
+import Button from "./button";
 
 interface SteamidInputProps {
   addSteamid: (steamid: string) => void;
 }
 
 const SteamidInput = ({ addSteamid }: SteamidInputProps) => {
-  const [steamidInput, setSteamidInput] = useState('');
+  const [steamidInput, setSteamidInput] = useState("");
 
   const handleSubmit = () => {
     if (steamidInput?.length > 0) {
       addSteamid(steamidInput);
-      setSteamidInput('');
+      setSteamidInput("");
     }
   };
 

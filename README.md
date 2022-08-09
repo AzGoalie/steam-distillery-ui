@@ -2,13 +2,14 @@
 
 A simple frontend for consuming the apis exposed in [Steam Distillery](https://github.com/AzGoalie/steam-distillery) utilizing the following:
 
-* [React](https://reactjs.org/)
-* [Next.js](https://nextjs.org/)
-* [TailwindCSS](https://tailwindcss.com/)
-* [Apollo GraphQL](https://www.apollographql.com/)
+- [React](https://reactjs.org/)
+- [Next.js](https://nextjs.org/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [Apollo GraphQL](https://www.apollographql.com/)
 
 ## Live Demo
-A live demo can be found at: https://steam.pepitozcatemporium.com/
+
+A live demo can be found at: https://steam-distillery.io
 
 ## Getting Started
 

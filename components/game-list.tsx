@@ -1,5 +1,5 @@
-import GameCard from './game-card';
-import Spinner from './spinner';
+import GameCard from "./game-card";
+import Spinner from "./spinner";
 
 interface GameListProps {
   games: any[];
