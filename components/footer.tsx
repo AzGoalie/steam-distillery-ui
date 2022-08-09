@@ -6,7 +6,7 @@ const Footer = () => (
   <footer className="flex flex-col items-center bg-gray-100 p-4 shadow dark:bg-gray-800 sm:flex-row md:justify-between md:p-6">
     <a
       href="https://steam.pepitozcatemporium.com/"
-      className="mb-4 flex items-center sm:mb-0"
+      className="flex items-center"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +33,7 @@ const Footer = () => (
       </a>
       <a
         href="https://www.linkedin.com/in/travis-mcmahon-79055656"
-        className="ml-3 invert  dark:invert-0"
+        className="ml-3 invert dark:invert-0"
       >
         <Image src={linkedinIcon} alt="GitHub Icon" width={32} height={32} />
       </a>
