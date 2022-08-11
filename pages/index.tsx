@@ -6,18 +6,57 @@ import ErrorMessage from "../components/error-message";
 import Footer from "../components/footer";
 import GameList from "../components/game-list";
 import SteamidInput from "../components/steamid-input";
-import SteamidList from "../components/steamid-list";
-import useApps from "../hooks/useApps";
+import SteamidList from "../components/user-list";
+import useUsers, { App, User } from "../hooks/useUsers";
+
+const multiplayerCategories = [
+  "Multi-player",
+  "Cross-Platform Multiplayer",
+  "Online Co-op",
+  "MMO",
+  "Online PvP",
+];
+
+const frequency = (
+  accu: { [key: string]: { freq: number; app: App } },
+  currentValue: App
+) => {
+  if (accu[currentValue.appid]) {
+    accu[currentValue.appid].freq++;
+  } else {
+    accu[currentValue.appid] = { freq: 1, app: currentValue };
+  }
+  return accu;
+};
+
+const multiplayerPredicate = (app: App): boolean => {
+  return app.categories?.some((c) => multiplayerCategories.includes(c));
+};
 
 const Home: NextPage = () => {
-  const { getApps, apps, loading, error } = useApps();
+  const { getUsers, users, loading, error } = useUsers();
   const [steamids, setSteamids] = useState<string[]>([]);
+  const [apps, setApps] = useState<App[]>([]);
 
   useEffect(() => {
-    if (steamids?.length > 0) {
-      getApps({ variables: { steamids } });
-    }
+    getUsers(steamids);
   }, [steamids]);
+
+  useEffect(() => {
+    if (users.length > 0) {
+      const appFrequencies = users
+        .flatMap((user) => user.ownedApps)
+        .reduce(frequency, {});
+      const sharedApps = Object.entries(appFrequencies)
+        .filter(([_, { freq }]) => freq === users.length)
+        .map(([_, { app }]) => app)
+        .filter(multiplayerPredicate);
+
+      setApps(sharedApps);
+    } else {
+      setApps([]);
+    }
+  }, [users]);
 
   const addSteamid = (steamid: string) => {
     if (!steamids.includes(steamid)) {
@@ -25,8 +64,8 @@ const Home: NextPage = () => {
     }
   };
 
-  const removeSteamid = (steamid: string) =>
-    setSteamids(steamids.filter((id) => id !== steamid));
+  const removeUser = (user: User) =>
+    setSteamids(steamids.filter((id) => id !== user.steamid));
 
   return (
     <div className="flex min-h-screen flex-col justify-between gap-4 dark:bg-gray-900">
@@ -62,7 +101,7 @@ const Home: NextPage = () => {
 
           {error && <ErrorMessage message={error.message} />}
 
-          <SteamidList steamids={steamids} removeSteamid={removeSteamid} />
+          <SteamidList users={users} removeUser={removeUser} />
           <GameList games={apps} loading={loading} />
         </div>
       </main>

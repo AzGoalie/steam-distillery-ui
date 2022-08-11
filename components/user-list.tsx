@@ -1,17 +1,19 @@
-interface SteamidListProps {
-  steamids: string[];
-  removeSteamid: (steamid: string) => void;
+import { User } from "../hooks/useUsers";
+
+interface UserListProps {
+  users: User[];
+  removeUser: (user: User) => void;
 }
 
-interface SteamidListItemProps {
-  steamid: string;
+interface UserListItemProps {
+  user: User;
   onRemove: () => void;
 }
 
-const SteamidListItem = ({ steamid, onRemove }: SteamidListItemProps) => (
+const UserListItem = ({ user, onRemove }: UserListItemProps) => (
   <li className="flex sm:max-w-xs">
     <div className="block w-full rounded-tl-lg rounded-bl-lg border border-gray-300 bg-gray-100 p-2.5 text-sm text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white">
-      {steamid}
+      {user.name}
     </div>
     <button
       className="rounded-tr-lg rounded-br-lg bg-indigo-700 px-2 py-2.5 text-center text-sm font-medium text-white hover:bg-indigo-800 focus:outline-none focus:ring-4 focus:ring-indigo-300 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-500 sm:w-auto"
@@ -35,10 +37,10 @@ const SteamidListItem = ({ steamid, onRemove }: SteamidListItemProps) => (
   </li>
 );
 
-const SteamidList = ({ steamids, removeSteamid }: SteamidListProps) => {
+const UserList = ({ users, removeUser }: UserListProps) => {
   return (
     <div>
-      {steamids?.length > 0 && (
+      {users?.length > 0 && (
         <h2 className="mb-3 flex items-center gap-3 p-1 text-base font-normal dark:text-white">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -54,16 +56,16 @@ const SteamidList = ({ steamids, removeSteamid }: SteamidListProps) => {
               d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
             />
           </svg>
-          Steam IDs
+          Steam Users
         </h2>
       )}
 
       <ul className="mx-auto grid gap-4 sm:grid-cols-3 md:grid-cols-4">
-        {steamids.map((id, idx) => (
-          <SteamidListItem
-            key={id + idx}
-            steamid={id}
-            onRemove={() => removeSteamid(id)}
+        {users.map((user) => (
+          <UserListItem
+            key={user.steamid}
+            user={user}
+            onRemove={() => removeUser(user)}
           />
         ))}
       </ul>
@@ -71,4 +73,4 @@ const SteamidList = ({ steamids, removeSteamid }: SteamidListProps) => {
   );
 };
 
-export default SteamidList;
+export default UserList;
