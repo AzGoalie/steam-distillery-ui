@@ -7,56 +7,17 @@ import Footer from "../components/footer";
 import GameList from "../components/game-list";
 import SteamidInput from "../components/steamid-input";
 import SteamidList from "../components/user-list";
-import useUsers, { App, User } from "../hooks/useUsers";
-
-const multiplayerCategories = [
-  "Multi-player",
-  "Cross-Platform Multiplayer",
-  "Online Co-op",
-  "MMO",
-  "Online PvP",
-];
-
-const frequency = (
-  accu: { [key: string]: { freq: number; app: App } },
-  currentValue: App
-) => {
-  if (accu[currentValue.appid]) {
-    accu[currentValue.appid].freq++;
-  } else {
-    accu[currentValue.appid] = { freq: 1, app: currentValue };
-  }
-  return accu;
-};
-
-const multiplayerPredicate = (app: App): boolean => {
-  return app.categories?.some((c) => multiplayerCategories.includes(c));
-};
+import useUsers, { User } from "../hooks/useUsers";
+import filterMultiplayerApps from "../utils/filterMultiplayerApps";
 
 const Home: NextPage = () => {
   const { getUsers, users, loading, error } = useUsers();
   const [steamids, setSteamids] = useState<string[]>([]);
-  const [apps, setApps] = useState<App[]>([]);
+  const multiplayerApps = filterMultiplayerApps(users);
 
   useEffect(() => {
     getUsers(steamids);
   }, [steamids]);
-
-  useEffect(() => {
-    if (users.length > 0) {
-      const appFrequencies = users
-        .flatMap((user) => user.ownedApps)
-        .reduce(frequency, {});
-      const sharedApps = Object.entries(appFrequencies)
-        .filter(([_, { freq }]) => freq === users.length)
-        .map(([_, { app }]) => app)
-        .filter(multiplayerPredicate);
-
-      setApps(sharedApps);
-    } else {
-      setApps([]);
-    }
-  }, [users]);
 
   const addSteamid = (steamid: string) => {
     if (!steamids.includes(steamid)) {
@@ -102,7 +63,7 @@ const Home: NextPage = () => {
           {error && <ErrorMessage message={error.message} />}
 
           <SteamidList users={users} removeUser={removeUser} />
-          <GameList games={apps} loading={loading} />
+          <GameList games={multiplayerApps} loading={loading} />
         </div>
       </main>
 
