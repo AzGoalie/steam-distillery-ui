@@ -1,5 +1,4 @@
-import { gql, useLazyQuery } from "@apollo/client";
-import { useEffect, useState } from "react";
+import { gql, useQuery } from "@apollo/client";
 
 export interface App {
   appid: number;
@@ -27,23 +26,13 @@ const USERS_QUERY = gql`
   }
 `;
 
-const useUsers = () => {
-  const [getUsersQuery, { loading, error, data }] = useLazyQuery<{
+const useUsers = (steamids: string[]) => {
+  const { loading, error, data } = useQuery<{
     users: User[];
-  }>(USERS_QUERY);
-  const [users, setUsers] = useState<User[]>([]);
+  }>(USERS_QUERY, { variables: { steamids } });
+  const users = data?.users ?? [];
 
-  useEffect(() => {
-    if (data) {
-      setUsers(data.users);
-    }
-  }, [data]);
-
-  const getUsers = (steamids: string[]) => {
-    getUsersQuery({ variables: { steamids } });
-  };
-
-  return { getUsers, users, loading, error };
+  return { users, loading, error };
 };
 
 export default useUsers;

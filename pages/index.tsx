@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import DarkmodeToggle from "../components/darkmode-toggle";
 import ErrorMessage from "../components/error-message";
 import Footer from "../components/footer";
@@ -11,13 +11,9 @@ import useUsers, { User } from "../hooks/useUsers";
 import filterMultiplayerApps from "../utils/filterMultiplayerApps";
 
 const Home: NextPage = () => {
-  const { getUsers, users, loading, error } = useUsers();
   const [steamids, setSteamids] = useState<string[]>([]);
+  const { users, loading, error } = useUsers(steamids);
   const multiplayerApps = filterMultiplayerApps(users);
-
-  useEffect(() => {
-    getUsers(steamids);
-  }, [steamids]);
 
   const addSteamid = (steamid: string) => {
     if (!steamids.includes(steamid)) {
